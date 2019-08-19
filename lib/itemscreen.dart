@@ -135,7 +135,7 @@ Widget itemCard(imagename, itmname, itmprice, context) {
                                 itemQun: 1,
                                 itemPrice: itmprice,
                                 finalPrice: itmprice));
-                                counter++;
+                                counter=itemList.length;
                             final snackBar = SnackBar(
                               content: Text('Product added successfully!'),
                               action: SnackBarAction(

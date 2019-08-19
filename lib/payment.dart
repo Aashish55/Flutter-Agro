@@ -1,3 +1,4 @@
+import 'package:agro_fresh/cartpage.dart';
 import 'package:flutter/material.dart';
 
 class Payment_Screen extends StatefulWidget {
@@ -267,6 +268,37 @@ class payment extends State<Payment_Screen> {
                         child: const Text('PROCEED TO PAY'),
                         textColor: Colors.green,
                         onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              // return object of type Dialog
+                              return AlertDialog(
+                                title: new Text("Confirm"),
+                                content: new Text("This will clear your Product List and Confirm your Products.",
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                  fontSize: 12.0,
+                                ),
+                                ),
+                                actions: <Widget>[
+                                  new FlatButton(
+                                    child: new Text("Cancel"),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                  new FlatButton(
+                                    child: new Text("Confirm"),
+                                    onPressed: () {
+                                      itemList.clear();
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                          
                           //   Navigator.push(context, MaterialPageRoute(builder: (context)=> Item_Details()));
                         },
                         shape: new OutlineInputBorder(

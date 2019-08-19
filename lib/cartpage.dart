@@ -1,3 +1,5 @@
+import 'package:agro_fresh/homepage.dart';
+import 'package:agro_fresh/itemscreen.dart';
 import 'package:flutter/material.dart';
 import 'checkoutpage.dart';
 
@@ -12,6 +14,7 @@ class CartScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => Cart();
 }
+
 class Item {
   final String itemImage;
   final String itemName;
@@ -101,10 +104,10 @@ class Cart extends State<CartScreen> {
                           color: Colors.white,
                         ),
                         onPressed: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //         builder: (context) => Item_Screen()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Homepage()));
                         }),
                   ],
                 ),
@@ -114,274 +117,337 @@ class Cart extends State<CartScreen> {
         ],
       ),
       backgroundColor: Color(0xffc5c5c5),
-      body: Column(
-        children: <Widget>[
-          Container(
-              margin: EdgeInsets.only(left: 0.0, right: 0.0, bottom: 10.0),
-              child: Card(
-                  child: Container(
-                      padding:
-                          const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-                      child: GestureDetector(
-                          child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          // three line description
-                          Row(
-                            children: <Widget>[
-                              Text(
-                                'Area : ',
-                                style: TextStyle(
-                                  fontSize: 17.0,
-                                  fontStyle: FontStyle.normal,
-                                  color: Colors.black54,
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(right: 2.0),
-                              ),
-                              GestureDetector(
-                                child: Text(
-                                  'Panauti',
-                                  style: TextStyle(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.bold,
-                                      decoration: TextDecoration.underline,
-                                      color: Colors.black),
-                                ),
-                                onTap: () {
-                                  showDemoDialog<DialogDemoAction>(
-                                      context: context,
-                                      child: AlertDialog(
-                                          title: const Text('Location'),
-                                          content: SizedBox(
-                                            height: 24.0,
-                                            child: TextFormField(
-                                                keyboardType: TextInputType
-                                                    .emailAddress, // Use email input type for emails.
-                                                decoration: new InputDecoration(
-                                                    hintText: '******',
-                                                    labelText: 'Location'),
-                                                //  validator: this._validateEmail,
-                                                onSaved: (String value) {
-                                                  this.areaName = value;
-                                                }),
-                                          ),
-                                          actions: <Widget>[
-                                            FlatButton(
-                                                child: const Text('CANCEL'),
-                                                onPressed: () {
-                                                  Navigator.pop(
-                                                      context,
-                                                      DialogDemoAction
-                                                          .disagree);
-                                                }),
-                                            FlatButton(
-                                                child: const Text('SAVE'),
-                                                onPressed: () {
-                                                  Navigator.pop(context,
-                                                      DialogDemoAction.agree);
-                                                })
-                                          ]));
-                                },
-                              )
-                            ],
-                          ),
-                        ],
-                      ))))),
-          Container(
-              margin: EdgeInsets.only(
-                  left: 12.0, top: 5.0, right: 12.0, bottom: 10.0),
-              height: hh,
-              child: ListView.builder(
-                  itemCount: itemList.length,
-                  itemBuilder: (BuildContext context, int ind) {
-                    return SafeArea(
+      body: itemList.length != 0
+          ? Column(
+              children: <Widget>[
+                Container(
+                    margin:
+                        EdgeInsets.only(left: 0.0, right: 0.0, bottom: 10.0),
+                    child: Card(
                         child: Container(
-                      alignment: Alignment.topLeft,
-                      child: Column(
-                        children: <Widget>[
-                          Container(
-                              alignment: Alignment.topLeft,
-                              child: Row(
-                                children: <Widget>[
-                                  Container(
-                                    height: 120.0,
-                                    width: dd - 20.0,
-                                    child: Card(
-                                      child: Row(
-                                        children: <Widget>[
-                                          SizedBox(
-                                              height: 110.0,
-                                              width: 100.0,
-                                              child: Image.asset(
-                                                itemList[ind].itemImage,
-                                                fit: BoxFit.fill,
-                                              )),
-                                          SizedBox(
-                                              height: 110.0,
-                                              child: Container(
-                                                alignment: Alignment.topLeft,
-                                                child: Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  children: <Widget>[
-                                                    _verticalD(),
-                                                    Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      children: <Widget>[
-                                                        Text(
-                                                          itemList[ind]
-                                                              .itemName,
-                                                          style: TextStyle(
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              fontSize: 18.0,
-                                                              color:
-                                                                  Colors.black),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    _verticalD(),
-                                                    Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .start,
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: <Widget>[
-                                                        Text(
-                                                          'Rs :' +
-                                                              itemList[ind]
-                                                                  .itemPrice
-                                                                  .toString(),
-                                                          style: TextStyle(
-                                                              fontSize: 15.0,
-                                                              color: Colors
-                                                                  .black54),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceBetween,
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .center,
-                                                      children: <Widget>[
-                                                        new IconButton(
-                                                          icon: Icon(
-                                                              _add_icon(),
-                                                              color: Colors.red
-                                                                  .shade500),
-                                                          onPressed: () {
-                                                            setState(() {
-                                                              itemList[ind]
-                                                                  .itemQun++;
-                                                              itemList[ind]
-                                                                  .finalPrice = itemList[
-                                                                          ind]
-                                                                      .itemQun *
-                                                                  itemList[ind]
-                                                                      .itemPrice;
-                                                            });
-                                                          },
-                                                        ),
-                                                        Container(
-                                                          margin:
-                                                              EdgeInsets.only(
-                                                                  left: 2.0),
-                                                        ),
-                                                        Text(
-                                                          itemList[ind]
-                                                              .itemQun
-                                                              .toString(),
-                                                        ),
-                                                        Container(
-                                                          margin:
-                                                              EdgeInsets.only(
-                                                                  right: 2.0),
-                                                        ),
-                                                        new IconButton(
-                                                          icon: Icon(
-                                                              _sub_icon(),
-                                                              color: Colors.red
-                                                                  .shade500),
-                                                          onPressed: () {
-                                                            if (itemList[ind]
-                                                                    .itemQun <=
-                                                                1) {
-                                                              setState(() {
-                                                                itemList.remove(
-                                                                    itemList[
-                                                                        ind]);
-                                                              });
-                                                            } else {
-                                                              setState(() {
-                                                                itemList[ind]
-                                                                    .itemQun--;
-                                                                itemList[ind]
-                                                                    .finalPrice = itemList[
-                                                                            ind]
-                                                                        .itemQun *
-                                                                    itemList[
-                                                                            ind]
-                                                                        .itemPrice;
-                                                              });
-                                                            }
-                                                          },
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
-                                                ),
-                                              ))
-                                        ],
+                            padding: const EdgeInsets.fromLTRB(
+                                10.0, 10.0, 10.0, 10.0),
+                            child: GestureDetector(
+                                child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                // three line description
+                                Row(
+                                  children: <Widget>[
+                                    Text(
+                                      'Area : ',
+                                      style: TextStyle(
+                                        fontSize: 17.0,
+                                        fontStyle: FontStyle.normal,
+                                        color: Colors.black54,
                                       ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                      height: 110.0,
-                                      width: 75.0,
-                                      child: Container(
-                                          alignment: Alignment.center,
-                                          color: getColor(ind),
-                                          child: FlatButton(
-                                            splashColor: Color(0xff2ed573),
-                                            onPressed: () {},
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(22.0)),
+                                    Container(
+                                      margin: EdgeInsets.only(right: 2.0),
+                                    ),
+                                    GestureDetector(
+                                      child: Text(
+                                        'Panauti',
+                                        style: TextStyle(
+                                            fontSize: 18.0,
+                                            fontWeight: FontWeight.bold,
+                                            decoration:
+                                                TextDecoration.underline,
+                                            color: Colors.black),
+                                      ),
+                                      onTap: () {
+                                        showDemoDialog<DialogDemoAction>(
+                                            context: context,
+                                            child: AlertDialog(
+                                                title: const Text('Location'),
+                                                content: SizedBox(
+                                                  height: 24.0,
+                                                  child: TextFormField(
+                                                      keyboardType: TextInputType
+                                                          .emailAddress, // Use email input type for emails.
+                                                      decoration:
+                                                          new InputDecoration(
+                                                              hintText:
+                                                                  '******',
+                                                              labelText:
+                                                                  'Location'),
+                                                      //  validator: this._validateEmail,
+                                                      onSaved: (String value) {
+                                                        this.areaName = value;
+                                                      }),
+                                                ),
+                                                actions: <Widget>[
+                                                  FlatButton(
+                                                      child:
+                                                          const Text('CANCEL'),
+                                                      onPressed: () {
+                                                        Navigator.pop(
+                                                            context,
+                                                            DialogDemoAction
+                                                                .disagree);
+                                                      }),
+                                                  FlatButton(
+                                                      child: const Text('SAVE'),
+                                                      onPressed: () {
+                                                        Navigator.pop(
+                                                            context,
+                                                            DialogDemoAction
+                                                                .agree);
+                                                      })
+                                                ]));
+                                      },
+                                    )
+                                  ],
+                                ),
+                              ],
+                            ))))),
+                Container(
+                    margin: EdgeInsets.only(
+                        left: 12.0, top: 5.0, right: 12.0, bottom: 10.0),
+                    height: hh,
+                    child: ListView.builder(
+                        itemCount: itemList.length,
+                        itemBuilder: (BuildContext context, int ind) {
+                          return SafeArea(
+                              child: Container(
+                            alignment: Alignment.topLeft,
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                    alignment: Alignment.topLeft,
+                                    child: Row(
+                                      children: <Widget>[
+                                        Container(
+                                          height: 120.0,
+                                          width: dd - 20.0,
+                                          child: Card(
+                                            child: Row(
+                                              children: <Widget>[
+                                                SizedBox(
+                                                    height: 110.0,
+                                                    width: 100.0,
+                                                    child: Image.asset(
+                                                      itemList[ind].itemImage,
+                                                      fit: BoxFit.fill,
+                                                    )),
+                                                SizedBox(
+                                                    height: 110.0,
+                                                    child: Container(
+                                                      alignment:
+                                                          Alignment.topLeft,
+                                                      child: Column(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .start,
+                                                        children: <Widget>[
+                                                          _verticalD(),
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            children: <Widget>[
+                                                              Text(
+                                                                itemList[ind]
+                                                                    .itemName,
+                                                                style: TextStyle(
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    fontSize:
+                                                                        18.0,
+                                                                    color: Colors
+                                                                        .black),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          _verticalD(),
+                                                          Row(
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .start,
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: <Widget>[
+                                                              Text(
+                                                                'Rs :' +
+                                                                    itemList[
+                                                                            ind]
+                                                                        .itemPrice
+                                                                        .toString(),
+                                                                style: TextStyle(
+                                                                    fontSize:
+                                                                        15.0,
+                                                                    color: Colors
+                                                                        .black54),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .center,
+                                                            children: <Widget>[
+                                                              new IconButton(
+                                                                icon: Icon(
+                                                                    _add_icon(),
+                                                                    color: Colors
+                                                                        .red
+                                                                        .shade500),
+                                                                onPressed: () {
+                                                                  setState(() {
+                                                                    itemList[
+                                                                            ind]
+                                                                        .itemQun++;
+                                                                    itemList[
+                                                                            ind]
+                                                                        .finalPrice = itemList[ind]
+                                                                            .itemQun *
+                                                                        itemList[ind]
+                                                                            .itemPrice;
+                                                                  });
+                                                                },
+                                                              ),
+                                                              Container(
+                                                                margin: EdgeInsets
+                                                                    .only(
+                                                                        left:
+                                                                            2.0),
+                                                              ),
+                                                              Text(
+                                                                itemList[ind]
+                                                                    .itemQun
+                                                                    .toString(),
+                                                              ),
+                                                              Container(
+                                                                margin: EdgeInsets
+                                                                    .only(
+                                                                        right:
+                                                                            2.0),
+                                                              ),
+                                                              new IconButton(
+                                                                icon: Icon(
+                                                                    _sub_icon(),
+                                                                    color: Colors
+                                                                        .red
+                                                                        .shade500),
+                                                                onPressed: () {
+                                                                  if (itemList[
+                                                                              ind]
+                                                                          .itemQun <=
+                                                                      1) {
+                                                                    setState(
+                                                                        () {
+                                                                      itemList.remove(
+                                                                          itemList[
+                                                                              ind]);
+                                                                    });
+                                                                  } else {
+                                                                    setState(
+                                                                        () {
+                                                                      itemList[
+                                                                              ind]
+                                                                          .itemQun--;
+                                                                      itemList[
+                                                                              ind]
+                                                                          .finalPrice = itemList[ind]
+                                                                              .itemQun *
+                                                                          itemList[ind]
+                                                                              .itemPrice;
+                                                                    });
+                                                                  }
+                                                                },
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ))
+                                              ],
                                             ),
-                                            //alignment: Alignment.center,
-                                            child: Text(
-                                              'Rs :' +
-                                                  itemList[ind]
-                                                      .finalPrice
-                                                      .toString(),
-                                              style: TextStyle(
-                                                  color: Colors.white,
-                                                  fontSize: 15.0),
-                                            ),
-                                          ))),
-                                ],
-                              )),
-                        ],
-                      ),
-                    ));
-                  })),
-        ],
-      ),
+                                          ),
+                                        ),
+                                        SizedBox(
+                                            height: 110.0,
+                                            width: 75.0,
+                                            child: Container(
+                                                alignment: Alignment.center,
+                                                color: getColor(ind),
+                                                child: FlatButton(
+                                                  splashColor:
+                                                      Color(0xff2ed573),
+                                                  onPressed: () {},
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                22.0)),
+                                                  ),
+                                                  //alignment: Alignment.center,
+                                                  child: Text(
+                                                    'Rs :' +
+                                                        itemList[ind]
+                                                            .finalPrice
+                                                            .toString(),
+                                                    style: TextStyle(
+                                                        color: Colors.white,
+                                                        fontSize: 15.0),
+                                                  ),
+                                                ))),
+                                      ],
+                                    )),
+                              ],
+                            ),
+                          ));
+                        })),
+              ],
+            )
+          : Container(
+              child: Column(
+                children: <Widget>[
+                  Image.asset('assets/empty-cart.png'),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 20.0),
+                  ),
+                  Text(
+                    'Looks like you haven\'t added anything to your cart.',
+                    style: TextStyle(color: Colors.black45, fontSize: 17.0),
+                    textAlign: TextAlign.center,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 10.0),
+                  ),
+                  OutlineButton(
+                    shape: new RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(2.0)),
+                    borderSide: BorderSide(
+                        color: Colors.black54,
+                        style: BorderStyle.solid,
+                        width: 2),
+                    splashColor: Colors.white,
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (ctx) => ItemScreen()));
+                    },
+                    child: Text(
+                      'Go Back to Shopping',
+                      style: TextStyle(color: Colors.black54, fontSize: 14.0),
+                    ),
+                  ),
+                  //color: Colors.transparent,
+                ],
+              ),
+            ),
       bottomSheet: Container(
           alignment: Alignment.bottomLeft,
           height: 60.0,
@@ -404,7 +470,7 @@ class Cart extends State<CartScreen> {
                   finalValue(),
                   style: TextStyle(fontSize: 17.0, color: Colors.black54),
                 ),
-                Padding(
+                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
                     alignment: Alignment.center,
@@ -413,14 +479,46 @@ class Cart extends State<CartScreen> {
                         child: const Text('CONFIRM ORDER'),
                         textColor: Colors.red.shade500,
                         onPressed: () {
-                          Navigator.push(context,
+                          if(itemList.length==0){
+                            showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              // return object of type Dialog
+                              return AlertDialog(
+                                title: new Text("Sorry.",
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                ),
+                                ),
+                                content: new Text("It seems like you haven't added any Products.",
+                                style: TextStyle(
+                                  color: Colors.black54,
+                                  fontSize: 12.0,
+                                ),
+                                ),
+                                actions: <Widget>[
+                                  new FlatButton(
+                                    child: new Text("Ok"),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                          }else{
+                            Navigator.push(context,
                               MaterialPageRoute(builder: (ctx) => Checkout()));
+                          }
+                          
                         },
                         shape: new OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30.0),
                         )),
                   ),
                 ),
+            
               ],
             ),
           )),

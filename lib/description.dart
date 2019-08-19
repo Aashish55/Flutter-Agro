@@ -178,7 +178,7 @@ class _DescriptionState extends State<Description> {
                                       itemQun: 1,
                                       itemPrice: itemprice,
                                       finalPrice: itemprice));
-                                  counter++;
+                                  counter=itemList.length;
                                   final snackBar = SnackBar(
                                     content:
                                         Text('Product added successfully!'),

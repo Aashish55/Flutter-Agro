@@ -5,7 +5,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/widgets.dart';
 import 'about.dart';
 import 'cartpage.dart';
-
+import 'description.dart';
 
 class Homepage extends StatefulWidget {
   @override
@@ -291,50 +291,6 @@ class _HomepageState extends State<Homepage> {
                   ),
                 ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.only(left: 16.0, bottom: 12.0),
-              //   child: Text(
-              //     'Menu',
-              //     style: TextStyle(
-              //       color: Colors.black54,
-              //       fontWeight: FontWeight.w700,
-              //       fontSize: 18.0,
-              //     ),
-              //   ),
-              // ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //   children: <Widget>[
-              //     _menuItems(Icons.camera, 0xffffbe76, 'Featured'),
-              //     _menuItems(Icons.file_download, 0xff686de0, 'Cheap'),
-              //     _menuItems(Icons.feedback, 0xffeb4d4b, 'Expensive'),
-              //     _menuItems(Icons.fiber_new, 0xffbe2edd, 'Apple'),
-              //   ],
-              // ),
-              // Padding(
-              //   padding: EdgeInsets.only(top: 10.0),
-              // ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //   children: <Widget>[
-              //     _menuItems(Icons.mail, 0xff009432, 'Banana'),
-              //     _menuItems(Icons.phone, 0xffED4C67, 'Cakes'),
-              //     _menuItems(Icons.lock, 0xffFFC312, 'FruitCakes'),
-              //     _menuItems(Icons.notifications, 0xff12CBC4, 'Kulfis'),
-              //   ],
-              // ),
-              // Padding(
-              //   padding: EdgeInsets.only(top: 10.0),
-              // ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-              //   children: <Widget>[
-              //     _menuItems(Icons.home, 0xff833471, "Drinks"),
-              //     _menuItems(Icons.hourglass_empty, 0xffEE5A24, 'Guavas'),
-              //     _menuItems(Icons.attach_money, 0xff1B1464, 'Litchi'),
-              //     _menuItems(Icons.battery_alert, 0xff5758BB, 'Grapes'),
-              //   ],
-              // ),
               Padding(
                 padding: EdgeInsets.only(
                   bottom: 20.0,
@@ -373,13 +329,13 @@ class _HomepageState extends State<Homepage> {
                               padding: EdgeInsets.only(top: 7.0),
                             ),
                             Image.asset(
-                              'assets/apple.jpg',
+                              'assets/grapes.jpg',
                               height: 160.0,
                               width: 160.0,
                               fit: BoxFit.cover,
                             ),
                             Text(
-                              'Apple',
+                              'Grapes',
                               style: TextStyle(
                                 fontSize: 25.0,
                                 color: Colors.black54,
@@ -396,7 +352,7 @@ class _HomepageState extends State<Homepage> {
                               ],
                             ),
                             Text(
-                              'Rs 130.0',
+                              'Rs 150.0',
                               style: TextStyle(
                                 fontSize: 15.0,
                                 color: Colors.black54,
@@ -405,10 +361,11 @@ class _HomepageState extends State<Homepage> {
                           ],
                         ),
                         onPressed: () {
+                          desc('assets/grapes.jpg', 'Grapes', 130);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (ctx) => ItemScreen()));
+                                  builder: (context) => Description()));
                         },
                       ),
                     ),
@@ -460,10 +417,11 @@ class _HomepageState extends State<Homepage> {
                           ],
                         ),
                         onPressed: () {
+                          desc('assets/banana.jpg', 'Banana', 130);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (ctx) => ItemScreen()));
+                                  builder: (context) => Description()));
                         },
                       ),
                       width: 160.0,
@@ -484,14 +442,14 @@ class _HomepageState extends State<Homepage> {
                               padding: EdgeInsets.only(top: 7.0),
                             ),
                             Image.asset(
-                              'assets/cake.jpg',
+                              'assets/lemons.jpg',
                               height: 160.0,
                               width: 160.0,
                               fit: BoxFit.cover,
                               colorBlendMode: BlendMode.colorDodge,
                             ),
                             Text(
-                              'Cake',
+                              'Lemon',
                               style: TextStyle(
                                 fontSize: 25.0,
                                 color: Colors.black54,
@@ -508,7 +466,7 @@ class _HomepageState extends State<Homepage> {
                               ],
                             ),
                             Text(
-                              'Rs 450.0',
+                              'Rs 20.0',
                               style: TextStyle(
                                 fontSize: 15.0,
                                 color: Colors.black54,
@@ -517,10 +475,11 @@ class _HomepageState extends State<Homepage> {
                           ],
                         ),
                         onPressed: () {
+                          desc('assets/lemons.jpg', 'Lemon', 130);
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (ctx) => ItemScreen()));
+                                  builder: (context) => Description()));
                         },
                       ),
                       width: 160.0,
