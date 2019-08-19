@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:flutter/widgets.dart';
 import 'about.dart';
+import 'cartpage.dart';
+
 
 class Homepage extends StatefulWidget {
   @override
@@ -47,7 +49,8 @@ class _HomepageState extends State<Homepage> {
               leading: Icon(Icons.shopping_cart),
               title: Text('My Cart'),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (ctx)=>CartScreen()));
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (ctx) => CartScreen()));
               },
             ),
             ListTile(
@@ -93,20 +96,52 @@ class _HomepageState extends State<Homepage> {
         title: _searchAppBar(context),
         backgroundColor: Colors.redAccent,
         actions: <Widget>[
-          IconButton(
-              icon: Icon(
-                Icons.shopping_cart,
-                color: Colors.white,
-              ),
-              tooltip: 'Open shopping cart',
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (ctx) => CartScreen()));
-              }),
+          new Stack(
+            children: <Widget>[
+              new IconButton(
+                  icon: Icon(
+                    Icons.shopping_cart,
+                    color: Colors.white,
+                    size: 35.0,
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (ctx) => CartScreen()));
+                    setState(() {
+                      counter = 0;
+                    });
+                  }),
+              counter != 0
+                  ? new Positioned(
+                      right: 4,
+                      top: 4,
+                      child: new Container(
+                        padding: EdgeInsets.all(2),
+                        decoration: new BoxDecoration(
+                          color: Color(0xffffa502),
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        constraints: BoxConstraints(
+                          minWidth: 18,
+                          minHeight: 18,
+                        ),
+                        child: Text(
+                          '$counter',
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontSize: 12,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    )
+                  : new Container()
+            ],
+          ),
           Padding(
             padding: EdgeInsets.only(right: 10.0),
           ),
-          Icon(Icons.notifications, color: Colors.white, size: 30),
+          // Icon(Icons.notifications, color: Colors.white, size: 30),
           Padding(
             padding: EdgeInsets.only(right: 10.0),
           ),
@@ -122,7 +157,7 @@ class _HomepageState extends State<Homepage> {
                   children: <Widget>[
                     SizedBox(
                       height: 170.0,
-                      width: 360.0,
+                      width: MediaQuery.of(context).size.width,
                       child: Carousel(
                         boxFit: BoxFit.cover,
                         autoplay: true,
@@ -557,3 +592,36 @@ Widget _searchAppBar(context) {
     ),
   );
 }
+
+// new Stack(
+//             children: <Widget>[
+//               new IconButton(icon: Icon(Icons.notifications), onPressed: () {
+//                 setState(() {
+//                   counter = 0;
+//                 });
+//               }),
+//               counter != 0 ? new Positioned(
+//                 right: 11,
+//                 top: 11,
+//                 child: new Container(
+//                   padding: EdgeInsets.all(2),
+//                   decoration: new BoxDecoration(
+//                     color: Colors.red,
+//                     borderRadius: BorderRadius.circular(6),
+//                   ),
+//                   constraints: BoxConstraints(
+//                     minWidth: 14,
+//                     minHeight: 14,
+//                   ),
+//                   child: Text(
+//                     '$counter',
+//                     style: TextStyle(
+//                       color: Colors.white,
+//                       fontSize: 8,
+//                     ),
+//                     textAlign: TextAlign.center,
+//                   ),
+//                 ),
+//               ) : new Container()
+//             ],
+//           ),

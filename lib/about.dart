@@ -46,7 +46,7 @@ class _AboutState extends State<About> {
                       fontSize: 18.0,
                       fontWeight: FontWeight.w600,
                       fontStyle: FontStyle.italic),
-                  textAlign: TextAlign.center,
+                  textAlign: TextAlign.justify,
                 ),
               ),
               Container(

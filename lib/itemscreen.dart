@@ -1,11 +1,13 @@
+import 'package:agro_fresh/description.dart';
 import 'package:flutter/material.dart';
 import 'cartpage.dart';
+import 'description.dart';
 
 class ItemScreen extends StatefulWidget {
   @override
   _ItemScreenState createState() => _ItemScreenState();
 }
-
+int counter=0;
 Color addButtonActiveColor = Colors.red.shade500;
 
 class _ItemScreenState extends State<ItemScreen> {
@@ -62,11 +64,13 @@ Widget itemCard(imagename, itmname, itmprice, context) {
       bottom: false,
       child: Container(
           height: 250.0,
-          width: 180.0,
+          width: MediaQuery.of(context).size.width/2,
           padding: const EdgeInsets.all(2.0),
           child: GestureDetector(
             onTap: () {
-              //Navigator.push(context, MaterialPageRoute(builder: (context)=> Item_Details()));
+              desc(imagename,itmname,itmprice);
+              print('$imagename'+ ' $itmname'+' $itmprice');
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> Description()));
             },
             child: Card(
               shape: RoundedRectangleBorder(
@@ -131,6 +135,7 @@ Widget itemCard(imagename, itmname, itmprice, context) {
                                 itemQun: 1,
                                 itemPrice: itmprice,
                                 finalPrice: itmprice));
+                                counter++;
                             final snackBar = SnackBar(
                               content: Text('Product added successfully!'),
                               action: SnackBarAction(

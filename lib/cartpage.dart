@@ -12,14 +12,6 @@ class CartScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => Cart();
 }
-// class CartItems{
-//   final String cartItemImage;
-//   final String cartItemName;
-//   final int cartItemQun;
-//   final String cartItemPrice;
-
-//   CartItems({this.cartItemImage, this.cartItemName, this.cartItemQun, this.cartItemPrice});
-// }
 class Item {
   final String itemImage;
   final String itemName;
