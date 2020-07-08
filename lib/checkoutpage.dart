@@ -65,7 +65,7 @@ class check_out extends State<Checkout> {
     return new Scaffold(
       key: _scaffoldKey,
       appBar: appBar,
-      backgroundColor: Color(0xffe5e5e5),
+      backgroundColor: Color(0xffffeaf0),
       body: new SingleChildScrollView(
         child: Column(
           children: <Widget>[

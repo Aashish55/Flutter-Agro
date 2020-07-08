@@ -20,6 +20,7 @@ class _AboutState extends State<About> {
         backgroundColor: Colors.redAccent,
         elevation: 5,
       ),
+      backgroundColor: Color(0xffffeaf0),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(8.0),
         child: Container(

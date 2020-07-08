@@ -31,6 +31,7 @@ class _DescriptionState extends State<Description> {
         centerTitle: true,
         elevation: 0,
       ),
+      backgroundColor: Color(0xffffeaf0),
       body: SingleChildScrollView(
         child: Stack(
           children: <Widget>[

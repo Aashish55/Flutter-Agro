@@ -23,11 +23,10 @@ class _ItemScreenState extends State<ItemScreen> {
         ),
         backgroundColor: Colors.redAccent,
       ),
-      backgroundColor: Color(0xffe5e5e5),
+      backgroundColor: Color(0xffffeaf0),
       body: SingleChildScrollView(
         child: Container(
             child: Column(
-          //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Row(

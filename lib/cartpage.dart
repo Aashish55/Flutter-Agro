@@ -116,7 +116,7 @@ class Cart extends State<CartScreen> {
           )
         ],
       ),
-      backgroundColor: Color(0xffc5c5c5),
+      backgroundColor: Color(0xffffeae0),
       body: itemList.length != 0
           ? Column(
               children: <Widget>[
